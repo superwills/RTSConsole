@@ -104,7 +104,7 @@ void WorldMap::Log( string msg, DWORD color )
 
 bool WorldMap::Occupied( Vector2 pos )
 {
-  COORD coordinatePosition = { roundf( pos.x ), roundf( pos.y ) };
+  COORD coordinatePosition = { (short)pos.x, (short)pos.y };
   return Occupied( coordinatePosition );
 }
 
