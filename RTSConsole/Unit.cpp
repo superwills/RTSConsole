@@ -18,13 +18,15 @@ SMALL_RECT Unit::getRect() const {
 void Unit::Update( WorldMap* worldMap )
 {
   Vector2 proposedPos = pos + vel;
-  if( !worldMap->Occupied( proposedPos ) )
+  if( !worldMap->Occupied( proposedPos ) ) {
+    // erase unit in old position in character map
+    worldMap->characterMap[ worldMap->li( pos ) ] = WorldMap::blank;
     pos = proposedPos;
+  }
   vel = { 0, 0 }; // Clear old velocity (or multiply by value less than 1 to slow the player down)
 
   // Bake updated position into the backingMap
-  int i = worldMap->li( pos );
-  worldMap->characterMap[ i ] = symbol;
+  worldMap->characterMap[ worldMap->li( pos ) ] = symbol;
 }
 
 bool Unit::isAttackable() { return true; }

@@ -10,6 +10,7 @@ struct Game
   bool running;
   Game();
   void Init();
+  void CenterConsoleWindow();
   void Update();
   void Draw();
 

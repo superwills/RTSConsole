@@ -7,6 +7,6 @@ Player::Player()
   symbol.Attributes = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
   symbol.Char.AsciiChar = Character;
 
-  speed = 0.25;
+  speed = 1.;
 }
 

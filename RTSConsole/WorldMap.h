@@ -18,6 +18,11 @@ struct Message
   Message( string iMessage, DWORD iColor ) : message( iMessage ), color( iColor ) { }
 };
 
+inline bool IsBlank( CHAR_INFO c )
+{
+  return c.Char.AsciiChar == ' ';
+}
+
 struct WorldMap
 {
   // This is the single, global only pointer to the actual console (the black output window).
@@ -44,6 +49,8 @@ struct WorldMap
 
   // Mapping that tells if a character is passible or not.
   map<char, bool> IsPassible;
+
+  static CHAR_INFO floor, blank, horizontalWall, verticalWall, corner;
 
   inline int li( int row, int col ) {
     return col + row*size.X; // col + row*[cols in map]
